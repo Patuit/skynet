@@ -1,7 +1,9 @@
   <div class="col-lg-4 col-md-6">
     <div class="cart">
       <div class="head">
-        <h2>Тариф "<?php echo $obj['tarifs'][$key]['title']; ?>"</h2>
+        <a href="#">
+          <h2>Тариф "<?php echo $obj['tarifs'][$key]['title']; ?>"</h2>
+        </a>
       </div>
       <div class="body">
         <div class="speed"><?php echo $obj['tarifs'][$key]['speed']; ?> Мбит/с</div>

@@ -15,10 +15,18 @@
       foreach ($obj['tarifs'] as $key => $value) {
         foreach ($obj['tarifs'][$key]['tarifs'] as $key2 => $value2) {
           $allPrice[$key2] = $obj['tarifs'][$key]['tarifs'][$key2]['price'] / $obj['tarifs'][$key]['tarifs'][$key2]['pay_period'];
+          preg_match('/\((.+)\)/', $obj['tarifs'][$key]['tarifs'][$key2]['title'], $matches);
+          if (!$matches[1]) {
+            $month[$key][$key2] = '1 месяц';
+          } else {
+            $month[$key][$key2] = $matches[1];
+          }
         }
         $maxPrice[$key] = max($allPrice);
         $minPrice[$key] = min($allPrice);
       }
+      var_dump($month);
+
     ?>
     <div class="container-fluid">
       <div class="container">
