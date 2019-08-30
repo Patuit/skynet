@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jQuery.min.js" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
   </head>
   <body>
     <?php
@@ -17,24 +18,28 @@
           $allPrice[$key2] = $obj['tarifs'][$key]['tarifs'][$key2]['price'] / $obj['tarifs'][$key]['tarifs'][$key2]['pay_period'];
           preg_match('/\((.+)\)/', $obj['tarifs'][$key]['tarifs'][$key2]['title'], $matches);
           if (!$matches[1]) {
-            $month[$key][$key2] = '1 месяц';
+            $obj['tarifs'][$key]['tarifs'][$key2] += ['month'=>'1 месяц'];
           } else {
-            $month[$key][$key2] = $matches[1];
+            $obj['tarifs'][$key]['tarifs'][$key2] += ['month'=>$matches[1]];
           }
         }
-        $maxPrice[$key] = max($allPrice);
-        $minPrice[$key] = min($allPrice);
-      }
-      var_dump($month);
+        sort($obj['tarifs'][$key]['tarifs']);
+        $obj['tarifs'][$key] += ['maxPrice'=>max($allPrice)];
+        $obj['tarifs'][$key] += ['minPrice'=>min($allPrice)];
 
+        $jsonPHP = json_encode($obj);
+      }
     ?>
+    <script type="text/javascript">
+    var dataJSON=<?=$jsonPHP?>;
+    </script>
     <div class="container-fluid">
       <div class="container">
-        <div class="row">
+        <div class="row body-tarifs">
             <?php
               if ($obj['result'] === 'ok') {
                 foreach ($obj['tarifs'] as $key => $value) {
-                  include "block/tarifs.php";
+                  include "controllers/tarifs.php";
                 }
               }
             ?>
