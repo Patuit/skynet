@@ -63,3 +63,35 @@ a {
   margin-left: 20px;
   padding: 15px 0;
 }
+
+.arrov {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.arrov:hover{
+  background-color: #c8c7cb;
+}
+
+.arrov svg {
+  width: 11px;
+  height: 15px;
+}
+
+@media (min-width:992px) {
+  .prev-page {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: all 0.2s;
+  }
+  .prev-page:hover{
+    background-color: #c8c7cb;
+  }
+}

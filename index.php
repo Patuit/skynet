@@ -5,9 +5,7 @@
     <title>Тестовое задание</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/jQuery.min.js" charset="utf-8"></script>
-    <script src="js/bootstrap.min.js" charset="utf-8"></script>
-    <script src="js/main.js" charset="utf-8"></script>
+    <script defer src="js/font-awesome.js"></script>
   </head>
   <body>
     <?php
@@ -37,14 +35,13 @@
       <div class="container">
         <div class="row body-tarifs">
             <?php
-              if ($obj['result'] === 'ok') {
-                foreach ($obj['tarifs'] as $key => $value) {
-                  include "controllers/tarifs.php";
-                }
-              }
+              include "controllers/tarifs.php";
             ?>
         </div>
       </div>
     </div>
+    <script src="js/jQuery.min.js" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
   </body>
 </html>
